@@ -13,7 +13,6 @@ The list can be scrolled up and down.
  - Emulator used when developing: Pixel 2 API 30, Pixel 6 Pro API 33
  
 # Installation Process
- - APK
     1. Android device:
         - Enable Unknown sources for the device.
         - Locate the APK file on your device and tap on it to start the installation process.
