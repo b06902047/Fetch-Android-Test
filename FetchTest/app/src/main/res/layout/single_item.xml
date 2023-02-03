@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:paddingTop="10dp"
+            tools:ignore="MissingConstraints">
+            <TextView
+                android:id="@+id/itemId"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="23(example)"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:background="@drawable/back">
+            </TextView>
+            <TextView
+                android:id="@+id/listId"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="1(example)"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:background="@drawable/back">
+            </TextView>
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Item 287(example)"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:background="@drawable/back">
+            </TextView>
+        </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
