@@ -6,15 +6,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.os.Build;
 import android.os.Bundle;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
+import java.io.BufferedReader;
 import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -23,24 +24,22 @@ public class MainActivity extends AppCompatActivity {
 
     private ArrayList<ItemModel> itemList;
 
-    public String loadJson(){
-        // Load data from hiring.json
-        String jsonData = null;
-
-        try {
-            InputStream is = getAssets().open("hiring.json");
-
-            int size = is.available();
-            byte[] buffer = new byte[size];
-
-            is.read(buffer);
-            is.close();
-            jsonData = new String(buffer, "UTF-8");
-        } catch (IOException ex) {
-            ex.printStackTrace();
+    public static String stream(URL url) {
+        // Retrieve data from url
+        try (InputStream input = url.openStream()) {
+            InputStreamReader isr = new InputStreamReader(input);
+            BufferedReader reader = new BufferedReader(isr);
+            StringBuilder json = new StringBuilder();
+            int c;
+            while ((c = reader.read()) != -1) {
+                json.append((char) c);
+            }
+            return json.toString();
         }
-
-        return jsonData;
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return null;
     }
 
     public static ArrayList<ItemModel> filterData(JSONArray jsonArray) throws JSONException {
@@ -69,10 +68,27 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Load and filter data
+        // Load data
+        final String[] data = {""};
+        try{
+            URL url = new URL("https://fetch-hiring.s3.amazonaws.com/hiring.json");
+            Thread thread = new Thread() {
+                @Override
+                public void run() {
+                    data[0] = stream(url);
+                }
+            };
+            thread.start();
+            thread.join();
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+
+        // Filter data
         JSONArray jsonArray = null;
         try {
-            jsonArray = new JSONArray(loadJson());
+            jsonArray = new JSONArray(data[0]);
             itemList = filterData(jsonArray);
         } catch (JSONException e) {
             e.printStackTrace();
@@ -89,6 +105,5 @@ public class MainActivity extends AppCompatActivity {
         listAdapter = new ListAdapter(itemList);
         recyclerView.setAdapter(listAdapter);
     }
-
 
 }
