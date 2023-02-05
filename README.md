@@ -13,15 +13,14 @@ The list can be scrolled up and down.
  - Emulator used when developing: Pixel 2 API 30, Pixel 6 Pro API 33
  
 # Installation Process
-    - Android device:
-        1. Enable unknown sources for the device.
-        2. Locate "app.apk" file on your device and tap on it to start the installation process.
-        3. Once the installation is completed, you should be able to launch the app.
-
-    - Android Studio:
-        1. Clone this repo.
-        2. Open "FetchTest" directory in Android Studio.
-        3. Sync Gradle and run emulator.
+ - Android device:
+  1. Enable unknown sources for the device.
+  2. Locate "app.apk" file on your device and tap on it to start the installation process.
+  3. Once the installation is completed, you should be able to launch the app.
+ - Android Studio:
+  1. Clone this repo.
+  2. Open "FetchTest" directory in Android Studio.
+  3. Sync Gradle and run emulator.
 
 # User Guide
 Users can scroll up and down to see the list sorted by "listId" in ascending order and "name" in lexicographical order.
