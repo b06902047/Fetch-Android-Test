@@ -1,5 +1,5 @@
 # Fetch-Android-Test
-The app is used to display a list of data retrieving from "https://fetch-hiring.s3.amazonaws.com/hiring.json". The app ensures that all data is grouped by "listId" and sorted first in "listId" then by "name" when displaying. Additionally, the app implements a filtering mechanism that automatically removes any items with blank or null "name" fields, ensuring that only relevant and accurate data is displayed.
+The app is used to display a list of data retrieved from "https://fetch-hiring.s3.amazonaws.com/hiring.json". The app ensures that all data is grouped by "listId" and sorted first in "listId" then by "name" when displaying. Additionally, the app implements a filtering mechanism that automatically removes any items with blank or null "name" fields, ensuring that only relevant and accurate data is displayed.
 
 # User Interface
 The list can be scrolled up and down.
